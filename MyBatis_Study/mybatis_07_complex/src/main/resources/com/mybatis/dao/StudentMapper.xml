@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mybatis.dao.StudentMapper">
+
+    <!--方式一：按查询嵌套处理-->
+    <resultMap id="StudentTeacher" type="student">
+        <!--映射参数不一致的情况-->
+        <!-- 复杂的属性：对象类型：association   集合类型：collection -->
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacherInfo"/>
+    </resultMap>
+
+    <select id="getStudentInfo" resultMap="StudentTeacher">
+        select * from student
+    </select>
+
+    <!--这里的#{tid}会自动匹配，不用传入 -->
+    <select id="getTeacherInfo" resultType="teacher">
+        select * from teacher where id=#{tid}
+    </select>
+
+    <!--方式二:按照结果嵌套查询【推荐】-->
+    <resultMap id="StudentTeacher2" type="student">
+        <!-- 学生映射学生的，复杂类型（对象类型）用association，再在里面映射老师的信息 -->
+        <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+        <association property="teacher" javaType="Teacher">
+            <result property="id" column="tid"/>
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+    <select id="getStudentInfo2" resultMap="StudentTeacher2">
+        select s.id sid, s.name sname,t.id tid, t.name tname
+        from student s,teacher t
+        where s.tid = t.id;
+    </select>
+</mapper>
