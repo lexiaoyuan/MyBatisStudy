@@ -1,4 +1,9 @@
-MyBatis学习
+# MyBatis学习
+
+- 官方文档：[mybatis – MyBatis 3 | 简介](https://mybatis.org/mybatis-3/zh/index.html)
+- Github：[mybatis/mybatis-3: MyBatis SQL mapper framework for Java (github.com)](https://github.com/mybatis/mybatis-3)
+- 参考视频：[【狂神说Java】Mybatis最新完整教程IDEA版通俗易懂_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1NE411Q7Nx)
+- 项目完整代码参考：[lexiaoyuan/MyBatisStudy: My MyBatis study notes (github.com)](https://github.com/lexiaoyuan/MyBatisStudy)、[MyBatisStudy: 我的MyBatis学习笔记 (gitee.com)](https://gitee.com/lexiaoyuan/mybatis-study)
 
 ## 简介
 
